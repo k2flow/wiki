@@ -7,6 +7,7 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <link rel="stylesheet" href="https://unpkg.com/docsify-giscus@1.0.0/dist/giscus.css">
 </head>
 <body>
   <div id="app">Please wait...</div>
@@ -14,6 +15,7 @@
     window.$docsify = {
       name: '',
       repo: '',
+      busuanzi: true,
       // docsify ads 配置广告
       ads: [
         // 七牛云
@@ -25,11 +27,29 @@
           img: 'https://dn-lego-static.qbox.me/cps/1638268217-480x300.jpg',
           href: 'https://s.qiniu.com/2eQN3m'
         },
-      ]
+      ],
+      giscus:{
+        repo: "k2flow/wiki",
+        repoId: "R_kgDOKdJwQw",
+        category: "Announcements",
+        categoryId: "DIC_kwDOKdJwQ84CZ8QL",
+        mapping: "url",
+        reactionsEnabled: "0",
+        strict: "1",
+        emitMetadata: "0",
+        inputPosition: "bottom",
+        theme: "preferred_color_scheme",
+        lang: "zh-CN",
+        loading: "lazy"
+      },
     }
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <!-- giscus评论  -->
+  <script src="https://unpkg.com/docsify-giscus@1.0.0/dist/docsify-giscus.min.js"></script>
+  <!-- docsify-busuanzi -->
+  <script src="https://unpkg.com/docsify-busuanzi@1.0.1/dist/docsify-busuanzi.min.js"></script>
   <!-- Docsify-ads -->>
   <script src="https://unpkg.com/docsify-ads@1.0.4/dist/docsify-ads.min.js"></script>
 </body>
