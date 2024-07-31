@@ -1,0 +1,70 @@
+远，近，中景不同的参数
+[图片]
+全 ：Smooth\dilate=5\30  redrawface dilate =0
+simple detector，全身的crop_factor 改为3
+扩展提示词格式
+新建文件 命名格式为 场景ID_prompts_ext.json
+eg:D000000000001312_prompts_ext.json
+文件内容
+{
+    "A_ext_prompts":"", #角色1
+    "B_ext_prompts":"", #角色2
+    "A_reface_ext_prompts":"", #角色1人脸重绘
+    "B_reface_ext_prompts":"", #角色2人脸重绘
+    "Global_ext_prompts":"", #全局提示词
+    "bg_ext_prompts":"", # 场景提示词
+    "negative_ext_prompts":"" #负向提示词
+}
+
+每行#及以后的文字要删除。因为是当作注释说明使用
+#⚠️注意 只需加入需要加入的提示词，比如 背景提示加入 公园 例子如下：
+
+{
+    "bg_ext_prompts":"(in the park:1.5)" # 场景提示词
+}
+亲吻的场景参数
+1. lineOrDepth -> 0, 0, 0
+2. pose: 0.5
+3. role 1 两轮ip adapter -> 0.5, role 1 第一一轮ip adapter face ->0.1
+4. role 2 两轮ip adapter -> 0.2, role 2 第一一轮ip adapter face ->0.1
+5. role1 reface prompt->  (kissing:1.5), (aniEmoEyeclosed:1.2)
+6. role2 reface prompt->  (kissing:1.5), (aniEmoEyeclosed:1.2)
+7. role1 prompt-first round ->(side view:1.5), (kissing:1.5)
+8. role2 prompt-first round ->(side view:1.5), (kissing:1.5)
+9. Global Prompt: (two people kissing:1.5)
+注：
+role2 的 IPadapter 和 faceID IPadapter 权重太低会导致发型不一致，可适当调高。
+含有“背”场景参数：
+1. lineOrDepth -> 0.6, 0, 0.75 
+2.
+   2个角色都含有背时：role 1 两轮ip adapter -> 0.5 （只对role1降低权重）
+    如果仅role2含义“背”, role2两轮ip adapter -> 0.5
+3:   role1/ role2 reface prompt: (from behind:1.5)
+4:  Global Prompt: (two/one people from behind:1.5)
+大小头
+可以调整骨架图两眼之间的距离
+表情提示词
+aniEmoPleased
+aniEmoEyeclosed
+aniEmoSad
+aniEmoShock
+aniEmoAngry
+aniEmoHappy
+aniEmoNervou
+道具不生效
+可提高线稿参数  strength 0.5->0.6 end_percent 0.5-0.75
+新建文件 场景ID_wf_ext.json的文件
+eg: D000000000005242_wf_ext.json
+内容格式如下:
+{
+    "lineORdepth-controller":{
+        "strength": 0.6,
+        "end_percent": 0.75
+    }
+}
+跳过线稿(线稿不生效)
+{
+    "skip_line":1
+}
+发型不一致
+扩大mask图
