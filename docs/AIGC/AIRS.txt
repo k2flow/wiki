@@ -1,0 +1,2 @@
+urn:air:sd1:lora:civitai:226035@255000
+urn:air:sd1:lora:civitai:146958@163791
